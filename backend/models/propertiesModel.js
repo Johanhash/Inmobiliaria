@@ -6,8 +6,20 @@ const Properties = {
         db.query(query, callback);
     },
     create: (data, callback) => {
-        const query = 'INSERT INTO properties (address, price, type, description) VALUES (?, ?, ?, ?)';
+        const query = 'INSERT INTO properties (address, price, type, description, status) VALUES (?, ?, ?, ?, "Disponible")';
         db.query(query, [data.address, data.price, data.type, data.description], callback);
+    },
+    update: (id, data, callback) => {
+        const query = `
+            UPDATE properties 
+            SET address = ?, price = ?, type = ?, description = ?, status = ? 
+            WHERE id = ?`;
+        const params = [data.address, data.price, data.type, data.description, data.status, id];
+        db.query(query, params, callback);
+    },
+    delete: (id, callback) => {
+        const query = 'DELETE FROM properties WHERE id = ?';
+        db.query(query, [id], callback);
     },
 };
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Citas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Gestión de Citas</h1>
+        <nav>
+            <ul>
+                <li><a href="panel.html">Propiedades</a></li>
+                <li><a href="clientes.html">Clientes</a></li>
+                <li><a href="citas.html">Citas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Registrar Cita</h2>
+            <form id="appointment-form">
+                <select id="client_id" name="client_id" required>
+                    <!-- Opciones de clientes -->
+                </select>
+                <select id="property_id" name="property_id" required>
+                    <!-- Opciones de propiedades -->
+                </select>
+                <select id="agent_id" name="agent_id" required>
+                    <!-- Opciones de agentes -->
+                </select>
+                <input type="date" name="date" required>
+                <input type="time" name="time" required>
+                <button type="submit">Registrar</button>
+            </form>
+        </section>
+        <section>
+            <h2>Listado de Citas</h2>
+            <div id="appointment-list">
+                <!-- Listado de citas -->
+            </div>
+        </section>
+    </main>
+    <script src="js/citas.js"></script>
+</body>
+</html>

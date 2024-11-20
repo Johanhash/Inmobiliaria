@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Documentos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Gestión de Documentos</h1>
+        <nav>
+            <ul>
+                <li><a href="panel.html">Propiedades</a></li>
+                <li><a href="transacciones.html">Transacciones</a></li>
+                <li><a href="documentos.html">Documentos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Subir Documento</h2>
+            <form id="document-form" enctype="multipart/form-data">
+                <input type="file" name="document" required>
+                <input type="text" name="associated_id" placeholder="ID Asociado" required>
+                <button type="submit">Subir</button>
+            </form>
+        </section>
+        <section>
+            <h2>Listado de Documentos</h2>
+            <div id="document-list">
+                <!-- Documentos se cargarán aquí -->
+            </div>
+        </section>
+    </main>
+    <script src="js/documentos.js"></script>
+</body>
+</html>

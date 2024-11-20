@@ -13,13 +13,13 @@ document.getElementById('admin-form').addEventListener('submit', async function 
 
         if (response.ok) {
             const data = await response.json();
-            alert('Inicio de sesión exitoso.');
             sessionStorage.setItem('token', data.token);
-            window.location.href = '/dashboard.html';
+            window.location.href = '/panel.html';
         } else {
             alert('Credenciales inválidas.');
         }
     } catch (error) {
-        console.error('Error during login:', error);
+        console.error('Error durante el inicio de sesión:', error);
     }
 });
+

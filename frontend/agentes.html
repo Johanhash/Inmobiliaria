@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Agentes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Gestión de Agentes</h1>
+        <nav>
+            <ul>
+                <li><a href="panel.html">Propiedades</a></li>
+                <li><a href="transacciones.html">Transacciones</a></li>
+                <li><a href="agentes.html">Agentes</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Registrar Agente</h2>
+            <form id="agent-form">
+                <input type="text" name="name" placeholder="Nombre" required>
+                <input type="email" name="email" placeholder="Correo Electrónico" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <button type="submit">Registrar</button>
+            </form>
+        </section>
+        <section>
+            <h2>Listado de Agentes</h2>
+            <div id="agent-list">
+                <!-- Agentes se cargarán aquí -->
+            </div>
+        </section>
+    </main>
+    <script src="js/agentes.js"></script>
+</body>
+</html>

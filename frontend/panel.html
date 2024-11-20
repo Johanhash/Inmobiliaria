@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrativo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Panel Administrativo</h1>
+        <nav>
+            <ul>
+                <li><a href="panel.html">Propiedades</a></li>
+                <li><a href="transacciones.html">Transacciones</a></li>
+                <li><a href="reportes.html">Reportes</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="property-management">
+            <h2>Gestión de Propiedades</h2>
+            <form id="property-form">
+                <input type="text" name="address" placeholder="Dirección" required>
+                <input type="number" name="price" placeholder="Precio" required>
+                <select name="type" required>
+                    <option value="Casa">Casa</option>
+                    <option value="Departamento">Departamento</option>
+                    <option value="Terreno">Terreno</option>
+                </select>
+                <textarea name="description" placeholder="Descripción" required></textarea>
+                <button type="submit">Registrar Propiedad</button>
+            </form>
+            <div id="property-list">
+                <!-- Aquí se mostrarán las propiedades -->
+            </div>
+        </section>
+    </main>
+    <script src="js/panel.js"></script>
+</body>
+</html>

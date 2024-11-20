@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Clientes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Gestión de Clientes</h1>
+        <nav>
+            <ul>
+                <li><a href="panel.html">Propiedades</a></li>
+                <li><a href="transacciones.html">Transacciones</a></li>
+                <li><a href="clientes.html">Clientes</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Registrar Cliente</h2>
+            <form id="client-form">
+                <input type="text" name="name" placeholder="Nombre" required>
+                <input type="email" name="email" placeholder="Correo Electrónico" required>
+                <input type="tel" name="phone" placeholder="Teléfono" required>
+                <textarea name="comments" placeholder="Comentarios"></textarea>
+                <button type="submit">Registrar</button>
+            </form>
+        </section>
+        <section>
+            <h2>Listado de Clientes</h2>
+            <div id="client-list">
+                <!-- Clientes se cargarán aquí -->
+            </div>
+        </section>
+    </main>
+    <script src="js/clientes.js"></script>
+</body>
+</html>
