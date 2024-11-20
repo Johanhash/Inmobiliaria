@@ -1,21 +1,27 @@
 const express = require('express');
-const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+const dotenv = require('dotenv');
 
+// Inicializa las configuraciones
 dotenv.config();
-
 const app = express();
-app.use(cors());
+
+// Middlewares
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Importar rutas
-app.use('/api/users', require('./routes/userRoutes'));
-app.use('/api/properties', require('./routes/propertyRoutes'));
-app.use('/api/clients', require('./routes/clientRoutes'));
-app.use('/api/transactions', require('./routes/transactionRoutes'));
-app.use('/api/appointments', require('./routes/appointmentRoutes'));
+const propertiesRoutes = require('./routes/properties');
+const usersRoutes = require('./routes/users');
+const transactionsRoutes = require('./routes/transactions');
 
-// Iniciar servidor
+// Definir las rutas principales
+app.use('/api/properties', propertiesRoutes);
+app.use('/api/users', usersRoutes);
+app.use('/api/transactions', transactionsRoutes);
+
+// Servidor
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+});

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Century 21 - Búsqueda</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Nosotros</a></li>
+                <li><a href="busqueda.html">Búsqueda</a></li>
+                <li><a href="contacto.html">Contáctanos</a></li>
+                <li><a href="admin.html">Administración</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="search">
+            <h1>Encuentra tu Propiedad</h1>
+            <form id="search-form">
+                <label for="location">Ubicación:</label>
+                <input type="text" id="location" name="location">
+                <label for="price">Rango de Precio:</label>
+                <input type="number" id="price-min" name="price-min" placeholder="Mínimo">
+                <input type="number" id="price-max" name="price-max" placeholder="Máximo">
+                <label for="type">Tipo de Propiedad:</label>
+                <select id="type" name="type">
+                    <option value="Casa">Casa</option>
+                    <option value="Departamento">Departamento</option>
+                    <option value="Terreno">Terreno</option>
+                </select>
+                <button type="submit">Buscar</button>
+            </form>
+        </section>
+        <section class="results" id="results"></section>
+    </main>
+    <script src="js/busqueda.js"></script>
+</body>
+</html>
