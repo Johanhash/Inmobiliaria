@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
+const path = require('path');
 
 // Inicializa las configuraciones
 dotenv.config();
@@ -10,6 +11,16 @@ const app = express();
 // Middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
+// Configurar la carpeta del frontend como contenido estático
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+// Definir la ruta principal para servir el archivo index.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/index.html'));
+});
+
 
 // Importar rutas
 const reportsRoutes = require('./routes/reports');
