@@ -9,6 +9,7 @@ exports.getAllAgents = (req, res) => {
 
 exports.createAgent = (req, res) => {
     const { name, email, password } = req.body;
+
     if (!name || !email || !password) {
         return res.status(400).json({ message: 'Todos los campos son obligatorios.' });
     }
@@ -16,10 +17,15 @@ exports.createAgent = (req, res) => {
     const data = { name, email, password };
 
     Agents.create(data, (err, result) => {
-        if (err) return res.status(500).json({ error: err.message });
+        if (err) {
+            console.error('Error al registrar agente:', err);
+            return res.status(500).json({ message: 'Error al registrar el agente.' });
+        }
+
         res.status(201).json({ message: 'Agente registrado con éxito.', agentId: result.insertId });
     });
 };
+
 
 exports.updateAgent = (req, res) => {
     const { id } = req.params;

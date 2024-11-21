@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
             const [propertiesRes, agentsRes] = await Promise.all([
                 fetch('/api/properties', { headers: { Authorization: `Bearer ${token}` } }),
-                fetch('/api/users', { headers: { Authorization: `Bearer ${token}` } }),
+                fetch('/api/agents', { headers: { Authorization: `Bearer ${token}` } }), // Cambiar de /api/users a /api/agents
             ]);
     
             if (!propertiesRes.ok) {
@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.error('Error al cargar opciones:', error);
         }
     };
+    
     
 
     // Registrar transacción
