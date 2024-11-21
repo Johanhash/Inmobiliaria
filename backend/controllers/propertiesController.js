@@ -8,6 +8,21 @@ exports.getAllProperties = (req, res) => {
     });
 };
 
+exports.getFilteredProperties = (req, res) => {
+    const filters = {
+        location: req.body.location || null,
+        priceMin: req.body.priceMin || null,
+        priceMax: req.body.priceMax || null,
+        type: req.body.type || null,
+    };
+
+    Properties.getFiltered(filters, (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(results);
+    });
+};
+
+
 exports.createProperty = (req, res) => {
     const { address, price, type, description } = req.body;
 
