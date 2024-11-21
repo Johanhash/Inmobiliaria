@@ -6,9 +6,21 @@ const Properties = {
         db.query(query, callback);
     },
     create: (data, callback) => {
-        const query = 'INSERT INTO properties (address, price, type, description, status) VALUES (?, ?, ?, ?, "Disponible")';
-        db.query(query, [data.address, data.price, data.type, data.description], callback);
+        const query = `
+    INSERT INTO properties (address, price, type, description, status) 
+    VALUES (?, ?, ?, ?, "Disponible")
+`;
+const params = [
+    data.address || '',
+    data.price || 0,
+    data.type || '',
+    data.description || '',
+];
+db.query(query, params, callback);
+
+    
     },
+    
     update: (id, data, callback) => {
         const query = `
             UPDATE properties 

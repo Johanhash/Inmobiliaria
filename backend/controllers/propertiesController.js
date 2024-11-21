@@ -9,20 +9,23 @@ exports.getAllProperties = (req, res) => {
 };
 
 exports.createProperty = (req, res) => {
-    const data = req.body;
+    const { address, price, type, description } = req.body;
 
-    // Crear propiedad
+    if (!address || !price || !type) {
+        return res.status(400).json({ message: 'Todos los campos son obligatorios.' });
+    }
+
+    const data = { address, price, type, description };
+
     Properties.create(data, (err, result) => {
         if (err) return res.status(500).json({ error: err.message });
-
-        // Registrar actividad
-        Logs.create(req.user.id, `Creó una propiedad: ${data.address}`, (err) => {
-            if (err) console.error('Error al registrar actividad:', err);
-        });
 
         res.status(201).json({ message: 'Propiedad registrada con éxito.' });
     });
 };
+
+
+
 exports.updateProperty = (req, res) => {
     const { id } = req.params;
     const { address, price, type, description, status } = req.body;

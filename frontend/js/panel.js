@@ -35,13 +35,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Registrar propiedad
     document.getElementById('property-form').addEventListener('submit', async e => {
         e.preventDefault();
-        const formData = new FormData(e.target);
+        const formData = Object.fromEntries(new FormData(e.target));
 
         try {
             const response = await fetch('/api/properties', {
                 method: 'POST',
-                headers: { Authorization: `Bearer ${token}` },
-                body: formData,
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(formData),
             });
 
             if (response.ok) {
