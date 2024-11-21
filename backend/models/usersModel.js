@@ -1,6 +1,10 @@
 const db = require('./db');
 
 const Users = {
+    getAgents: callback => {
+        const query = 'SELECT id, name FROM users WHERE role = "Agente"';
+        db.query(query, callback);
+    },
     create: (data, callback) => {
         const query = 'INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)';
         db.query(query, [data.name, data.email, data.password, data.role], callback);

@@ -36,20 +36,27 @@ document.addEventListener('DOMContentLoaded', async () => {
                 fetch('/api/properties', { headers: { Authorization: `Bearer ${token}` } }),
                 fetch('/api/users', { headers: { Authorization: `Bearer ${token}` } }),
             ]);
-
+    
+            if (!propertiesRes.ok) {
+                throw new Error('Error al obtener propiedades');
+            }
+            if (!agentsRes.ok) {
+                throw new Error('Error al obtener agentes');
+            }
+    
             const properties = await propertiesRes.json();
             const agents = await agentsRes.json();
-
+    
             const propertySelect = document.getElementById('property');
             const agentSelect = document.getElementById('agent');
-
+    
             properties.forEach(property => {
                 const option = document.createElement('option');
                 option.value = property.id;
                 option.textContent = property.address;
                 propertySelect.appendChild(option);
             });
-
+    
             agents.forEach(agent => {
                 const option = document.createElement('option');
                 option.value = agent.id;
@@ -60,6 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.error('Error al cargar opciones:', error);
         }
     };
+    
 
     // Registrar transacción
     document.getElementById('transaction-form').addEventListener('submit', async e => {

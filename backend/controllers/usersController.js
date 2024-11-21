@@ -18,3 +18,13 @@ exports.login = (req, res) => {
     });
 };
 
+exports.getAllAgents = (req, res) => {
+    Users.getAgents((err, results) => {
+        if (err) {
+            console.error('Error al obtener agentes:', err);
+            return res.status(500).json({ error: 'Error al obtener agentes.' });
+        }
+
+        res.json(results);
+    });
+};
