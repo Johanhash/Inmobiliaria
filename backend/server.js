@@ -12,6 +12,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Configurar CORS (opcional, si es necesario)
+const cors = require('cors');
+app.use(cors());
 
 // Configurar la carpeta del frontend como contenido estático
 app.use(express.static(path.join(__dirname, '../frontend')));
@@ -20,7 +23,6 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
-
 
 // Importar rutas
 const reportsRoutes = require('./routes/reports');
@@ -41,6 +43,10 @@ app.use('/api/appointments', appointmentsRoutes);
 app.use('/api/properties', propertiesRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/transactions', transactionsRoutes);
+
+// Nuevo endpoint para registro combinado de cliente y transacción
+const transactionsController = require('./controllers/transactionsController');
+app.post('/api/transactions/with-client', transactionsController.createTransactionWithClient);
 
 // Servidor
 const PORT = process.env.PORT || 3000;

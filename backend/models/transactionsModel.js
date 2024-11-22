@@ -23,9 +23,30 @@ const Transactions = {
         db.query(query, params, callback);
     },
     create: (data, callback) => {
-        const query = 'INSERT INTO transactions (property_id, agent_id, transaction_type, amount, date) VALUES (?, ?, ?, ?, ?)';
-        db.query(query, [data.property_id, data.agent_id, data.transaction_type, data.amount, data.date], callback);
+        const query = `
+            INSERT INTO transactions (property_id, client_id, agent_id, transaction_type, amount, date)
+            VALUES (?, ?, ?, ?, ?, ?)
+        `;
+    
+        const params = [
+            data.property_id,
+            data.client_id,
+            data.agent_id,
+            data.transaction_type,
+            data.amount,
+            data.date,
+        ];
+    
+        db.query(query, params, (err, result) => {
+            if (err) {
+                console.error('Error en la consulta SQL:', err);
+                return callback(err, null);
+            }
+    
+            callback(null, result);
+        });
     },
+    
     getDetailsById: (id, callback) => {
         const query = `
             SELECT 

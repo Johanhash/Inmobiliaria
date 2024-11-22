@@ -1,3 +1,5 @@
+const db = require('../models/db');
+
 const Clients = require('../models/clientsModel');
 
 exports.getAllClients = (req, res) => {
@@ -8,19 +10,23 @@ exports.getAllClients = (req, res) => {
 };
 
 exports.createClient = (req, res) => {
-    const { name, email, phone, comments } = req.body;
+    const { name, email, phone } = req.body;
 
     if (!name || !email || !phone) {
         return res.status(400).json({ message: 'Todos los campos son obligatorios.' });
     }
 
-    const data = { name, email, phone, comments: comments || '' };
+    const query = 'INSERT INTO clients (name, email, phone) VALUES (?, ?, ?)';
+    db.query(query, [name, email, phone], (err, result) => {
+        if (err) {
+            console.error('Error al registrar cliente:', err);
+            return res.status(500).json({ message: 'Error al registrar el cliente.' });
+        }
 
-    Clients.create(data, (err, result) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.status(201).json({ message: 'Cliente registrado con éxito.', clientId: result.insertId });
+        res.status(201).json({ id: result.insertId, message: 'Cliente registrado con éxito.' });
     });
 };
+
 
 exports.associateWithProperty = (req, res) => {
     const { client_id, property_id } = req.body;

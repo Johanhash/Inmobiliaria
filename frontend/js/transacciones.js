@@ -34,29 +34,29 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
             const [propertiesRes, agentsRes] = await Promise.all([
                 fetch('/api/properties', { headers: { Authorization: `Bearer ${token}` } }),
-                fetch('/api/agents', { headers: { Authorization: `Bearer ${token}` } }), // Cambiar de /api/users a /api/agents
+                fetch('/api/agents', { headers: { Authorization: `Bearer ${token}` } }),
             ]);
-    
+
             if (!propertiesRes.ok) {
                 throw new Error('Error al obtener propiedades');
             }
             if (!agentsRes.ok) {
                 throw new Error('Error al obtener agentes');
             }
-    
+
             const properties = await propertiesRes.json();
             const agents = await agentsRes.json();
-    
+
             const propertySelect = document.getElementById('property');
             const agentSelect = document.getElementById('agent');
-    
+
             properties.forEach(property => {
                 const option = document.createElement('option');
                 option.value = property.id;
                 option.textContent = property.address;
                 propertySelect.appendChild(option);
             });
-    
+
             agents.forEach(agent => {
                 const option = document.createElement('option');
                 option.value = agent.id;
@@ -67,33 +67,77 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.error('Error al cargar opciones:', error);
         }
     };
-    
-    
 
-    // Registrar transacción
+    // Registrar transacción y cliente en un único flujo
     document.getElementById('transaction-form').addEventListener('submit', async e => {
         e.preventDefault();
-
-        const formData = new FormData(e.target);
-
+    
+        const token = sessionStorage.getItem('token');
+        if (!token) {
+            alert('Debes iniciar sesión.');
+            window.location.href = 'admin.html';
+            return;
+        }
+    
+        // Datos del cliente
+        const clientData = {
+            name: document.getElementById('client-name').value,
+            email: document.getElementById('client-email').value,
+            phone: document.getElementById('client-phone').value,
+        };
+    
+        // Datos de la transacción
+        const transactionData = {
+            property_id: document.getElementById('property').value,
+            agent_id: document.getElementById('agent').value,
+            transaction_type: document.getElementById('type').value,
+            amount: document.getElementById('amount').value,
+            date: document.getElementById('date').value,
+        };
+    
         try {
-            const response = await fetch('/api/transactions', {
+            // Registrar cliente primero
+            const clientResponse = await fetch('/api/clients', {
                 method: 'POST',
-                headers: { Authorization: `Bearer ${token}` },
-                body: formData,
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(clientData),
             });
-
-            if (response.ok) {
-                alert('Transacción registrada con éxito.');
-                e.target.reset();
-                loadTransactions();
-            } else {
-                alert('Error al registrar la transacción.');
+    
+            if (!clientResponse.ok) {
+                const error = await clientResponse.json();
+                throw new Error(error.message || 'Error al registrar el cliente.');
             }
+    
+            const client = await clientResponse.json();
+    
+            // Usar el client_id para registrar la transacción
+            transactionData.client_id = client.id;
+    
+            const transactionResponse = await fetch('/api/transactions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(transactionData),
+            });
+    
+            if (!transactionResponse.ok) {
+                const error = await transactionResponse.json();
+                throw new Error(error.message || 'Error al registrar la transacción.');
+            }
+    
+            alert('Cliente y transacción registrados con éxito.');
+            e.target.reset();
         } catch (error) {
-            console.error('Error al registrar transacción:', error);
+            console.error(error);
+            alert(error.message);
         }
     });
+    
 
     // Cargar transacciones
     const loadTransactions = async () => {
@@ -101,6 +145,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             const response = await fetch('/api/transactions', {
                 headers: { Authorization: `Bearer ${token}` },
             });
+
+            if (!response.ok) {
+                throw new Error('Error al obtener transacciones.');
+            }
+
             const transactions = await response.json();
 
             const transactionList = document.getElementById('transaction-list');
@@ -113,6 +162,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <p>Tipo: ${transaction.transaction_type}</p>
                         <p>Monto: ${transaction.amount}</p>
                         <p>Fecha: ${transaction.date}</p>
+                        <button onclick="downloadContract(${transaction.id})">Descargar Contrato</button>
                     </div>
                 `
                 )
@@ -126,3 +176,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadOptions();
     await loadTransactions();
 });
+
