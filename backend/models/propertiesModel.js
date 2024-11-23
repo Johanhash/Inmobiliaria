@@ -1,6 +1,13 @@
 const db = require('./db');
 
 const Properties = {
+
+    getById: (id, callback) => {
+        const query = 'SELECT * FROM properties WHERE id = ?';
+        db.query(query, [id], callback);
+    },
+    
+
     getAll: callback => {
         const query = 'SELECT * FROM properties WHERE status = "Disponible"';
         db.query(query, callback);
