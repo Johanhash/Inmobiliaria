@@ -14,26 +14,39 @@
                 <li><a href="citas.html">Citas</a></li>
                 <li><a href="panel.html">Propiedades</a></li>
                 <li><a href="transacciones.html">Transacciones</a></li>
-                <li><a href="agentes.html">Registro de agentes</a> </li>
+                <li><a href="agentes.html">Registro de agentes</a></li>
                 <li><a href="reportes.html">Reportes</a></li>
-                
             </ul>
         </nav>
     </header>
     <main>
         <section id="property-management">
             <h2>Gestión de Propiedades</h2>
-            <form id="property-form">
+            <form id="property-form" enctype="multipart/form-data">
                 <input type="text" name="address" placeholder="Dirección" required>
                 <input type="number" name="price" placeholder="Precio" required>
+                
                 <select name="type" required>
                     <option value="Casa">Casa</option>
                     <option value="Departamento">Departamento</option>
                     <option value="Terreno">Terreno</option>
                 </select>
+
                 <textarea name="description" placeholder="Descripción" required></textarea>
+                
+                <input type="number" name="bedrooms" placeholder="Número de Recámaras" min="0" required>
+                <input type="number" name="bathrooms" placeholder="Número de Baños" min="0" required>
+                <input type="number" name="parking_spaces" placeholder="Espacios de Estacionamiento" min="0" required>
+                <input type="number" name="size" placeholder="Tamaño en m²" step="0.01" required>
+
+                <textarea name="features" placeholder="Características adicionales (separadas por comas)"></textarea>
+
+                <label for="images">Imágenes de la Propiedad:</label>
+                <input type="file" name="images" id="images" accept="image/*" multiple required>
+
                 <button type="submit">Registrar Propiedad</button>
             </form>
+            
             <div id="property-list">
                 <!-- Aquí se mostrarán las propiedades -->
             </div>
@@ -42,3 +55,4 @@
     <script src="js/panel.js"></script>
 </body>
 </html>
+

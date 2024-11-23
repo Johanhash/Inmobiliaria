@@ -43,6 +43,7 @@ app.use('/api/appointments', appointmentsRoutes);
 app.use('/api/properties', propertiesRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/transactions', transactionsRoutes);
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Nuevo endpoint para registro combinado de cliente y transacción
 const transactionsController = require('./controllers/transactionsController');

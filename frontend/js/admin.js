@@ -9,18 +9,20 @@ document.getElementById('admin-form').addEventListener('submit', async function 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password }),
-
         });
 
-        if (response.ok) {
-            const data = await response.json();
-            sessionStorage.setItem('token', data.token);
-            window.location.href = '/panel.html';
-        } else {
+        if (!response.ok) {
             alert('Credenciales inválidas.');
+            return;
         }
+
+        const data = await response.json();
+        sessionStorage.setItem('token', data.token);
+        window.location.href = 'panel.html';
     } catch (error) {
         console.error('Error durante el inicio de sesión:', error);
+        alert('Error al iniciar sesión. Intenta de nuevo.');
     }
 });
+
 

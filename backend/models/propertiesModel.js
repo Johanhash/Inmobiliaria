@@ -1,18 +1,16 @@
-const db = require('./db'); // Importa la conexión a la base de datos
+const db = require('./db');
 
 const Properties = {
-    // Método para obtener todas las propiedades
     getAll: callback => {
         const query = 'SELECT * FROM properties WHERE status = "Disponible"';
         db.query(query, callback);
     },
 
-    // NUEVO MÉTODO: Obtener propiedades con filtros
     getFiltered: (filters, callback) => {
         const { location, priceMin, priceMax, type } = filters;
         let query = 'SELECT * FROM properties WHERE status = "Disponible"';
         const params = [];
-    
+
         if (location) {
             query += ' AND address LIKE ?';
             params.push(`%${location}%`);
@@ -29,10 +27,61 @@ const Properties = {
             query += ' AND type = ?';
             params.push(type);
         }
-    
+
         db.query(query, params, callback);
     },
-};    
 
-module.exports = Properties; // Exporta el modelo para que pueda ser usado en otros archivos
+    create: (data, callback) => {
+        const query = `
+            INSERT INTO properties 
+            (address, price, type, description, bedrooms, bathrooms, parking_spaces, size, features, image_paths, status)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "Disponible")
+        `;
+        const params = [
+            data.address,
+            data.price,
+            data.type,
+            data.description,
+            data.bedrooms,
+            data.bathrooms,
+            data.parking_spaces,
+            data.size,
+            data.features || null,
+            JSON.stringify(data.image_paths || []),
+        ];
+        db.query(query, params, callback);
+    },
+
+    update: (id, data, callback) => {
+        const query = `
+            UPDATE properties 
+            SET address = ?, price = ?, type = ?, description = ?, status = ?, 
+                bedrooms = ?, bathrooms = ?, parking_spaces = ?, size = ?, features = ?, image_paths = ? 
+            WHERE id = ?
+        `;
+        const params = [
+            data.address,
+            data.price,
+            data.type,
+            data.description,
+            data.status,
+            data.bedrooms,
+            data.bathrooms,
+            data.parking_spaces,
+            data.size,
+            data.features || null,
+            JSON.stringify(data.image_paths || []),
+            id,
+        ];
+        db.query(query, params, callback);
+    },
+
+    delete: (id, callback) => {
+        const query = 'DELETE FROM properties WHERE id = ?';
+        db.query(query, [id], callback);
+    },
+};
+
+module.exports = Properties;
+
 
