@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Century 21 México</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #e3dfcf;
+      color: #000;
+      scroll-behavior: smooth; /* Desplazamiento suave */
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header, .footer {
+      position: fixed;
+      left: 0;
+      width: 100%;
+      background-color: #000;
+      color: #fff;
+      z-index: 1000;
+    }
+
+    .header {
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      height: 60px; /* Altura fija */
+    }
+
+    .header .nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .header .nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .header .socials img {
+      height: 20px;
+      margin-left: 15px;
+    }
+
+    .footer {
+      bottom: 0;
+      display: flex;
+      justify-content: space-around;
+      padding: 15px;
+      height: 50px; /* Altura fija */
+    }
+
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      padding: 20px;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 70px; /* Ajuste para que no se superponga con el header */
+      padding-bottom: 60px; /* Ajuste para que no se superponga con el footer */
+    }
+
+    .left-section {
+      flex: 1;
+      padding-right: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .text-container {
+      background-color: #000;
+      color: #fff;
+      padding: 30px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .text-container h1 {
+      margin-bottom: 20px;
+    }
+
+    .text-container p {
+      line-height: 1.6;
+    }
+
+    .advisor-section {
+      background-color: #000;
+      color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    .advisor-section p {
+      margin-bottom: 20px;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    .advisor-section .advisor-button {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 20px;
+      background-color: #a58d62; /* Marrón oscuro */
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .right-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .right-section img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .section {
+    height: 100vh; /* La sección ocupa toda la pantalla */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    background-color: #e3dfcf; /* Color de fondo */
+  }
+
+  .vision-content {
+    display: flex;
+    justify-content: space-between; /* Espacio uniforme entre los cuadros */
+    align-items: flex-start; /* Todos los cuadros comienzan a la misma altura */
+    width: 100%;
+    max-width: 1200px; /* Ancho máximo para mantener diseño responsive */
+    gap: 20px; /* Espaciado entre cuadros */
+  }
+
+  .vision-box {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    flex: 1; /* Todas las cajas tienen el mismo ancho */
+    min-width: 300px; /* Ancho mínimo para evitar que se vuelvan muy pequeñas */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinear contenido al inicio */
+    height: 100%; /* Asegurar que las cajas ocupen el mismo alto */
+  }
+
+  .vision-box h1 {
+    margin-bottom: 10px;
+    font-size: 20px; /* Título más pequeño */
+  }
+
+  .vision-box p {
+    font-size: 14px; /* Texto más pequeño */
+    line-height: 1.5; /* Espaciado entre líneas */
+    text-align: left;
+  }
+
+  /* Diseño responsive para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .vision-content {
+      flex-direction: column; /* Los cuadros se apilan verticalmente */
+      gap: 15px;
+    }
+
+    .vision-box {
+      height: auto; /* El alto se adapta al contenido en dispositivos pequeños */
+    }
+  }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo"> 
+      <img src="images/centuryLogo.png" alt="Century 21 Logo" height="30">
+    </div>
+    <nav class="nav">
+      <ul>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="busqueda.html">Búsqueda</a></li>
+        <li><a href="admin.html">Administración</a></li>
+        <li><a href="contacto.html">Contáctanos</a></li>
+      </ul>
+    </nav>
+    <div class="socials">
+      <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+      <a href="#"><img src="images/whatsapp.png" alt="WhatsApp"></a>
+      <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+    </div>
+  </header>
+  <main class="main-content">
+    <div class="left-section">
+      <div class="text-container">
+        <h1>CENTURY 21<sup>®</sup>: Tu Agencia de Bienes Raíces de Confianza en México</h1>
+        <p>Otorgando el 121%<br><br>
+        Solo la marca CENTURY 21<sup>®</sup> tiene la escala y la reputación para liderar la industria de bienes raíces hacia el futuro. Mientras que otros se enfocan simplemente en facilitar una transacción, los asesores de CENTURY 21<sup>®</sup> creen en el valor de brindar experiencias extraordinarias desafiando la mediocridad y siempre otorgando el 121%.</p>
+      </div>
+      <div class="advisor-section">
+        <p>ENCUENTRA UN ASESOR<br><br>
+        Ya sea que estés comprando o vendiendo una casa, un asesor de CENTURY 21<sup>®</sup> está listo para brindarte una experiencia extraordinaria. Nuestros asesores se comprometen a ayudarte a tomar decisiones informadas al capitalizar las oportunidades y tendencias actuales del mercado.</p>
+        <button class="advisor-button">Asesores</button>
+      </div>
+    </div>
+    <div class="right-section">
+      <img src="images/mapac21.png" alt="Mapa de Oficinas Century 21">
+    </div>
+  </main>
+  <!-- Sección Visión -->
+<div id="vision" class="section">
+    <div class="vision-content">
+      <div class="vision-box">
+        <h1>Misión</h1>
+        <p>Ser una organización inmobiliaria líder y profesional en México.
+          Nuestra misión en México es en primer lugar otorgar licencias a corredores inmobiliarios. Una vez otorgadas las licencias, CENTURY 21 México tiene la responsabilidad de hacerlas exitosas a través de la coordinación administrativa, la tecnología y el desarrollo de plataformas para atraer Agentes de Ventas para las oficinas afiliadas a CENTURY 21.
+        </p>
+      </div>
+      <div class="vision-box">
+        <h1>Visión</h1>
+        <p>Los líderes de CENTURY 21 México suman, entre ellos, más de 15 años de experiencia en la división de Real Estate a lo largo de varias generaciones, y 40 años en el negocio de licenciamiento de Real Estate bajo la Marca CENTURY 21 en Estados Unidos y otros países.<br>
+          El éxito conlleva la responsabilidad de brindar a nuestros clientes el mejor servicio en el negocio inmobiliario, esto se puede lograr brindando capacitación de la mejor calidad y conocimiento en Bienes Raíces a través de nuestros cursos, los cuales son los más avanzados en México.<br> 
+          Nuestro éxito futuro depende directamente de la dedicación para ayudar a nuestros corredores y Agentes de Ventas a establecer prioridades de crecimiento en su capacidad individual y, como oficina, a mejorar su imagen, tamaño y volumen, lo que nos llevará a una mayor productividad y satisfacción del trabajo bien hecho.            
+        </p>
+      </div>
+      <div class="vision-box">
+        <h1>Valores</h1>
+        <p>
+          PERSISTENCIA: Estamos obsesionados con lo mejor. No nos conformaremos. Creemos en la constante evolución y mejora, porque sabemos que siempre hay una mejor manera.<br> 
+          RESPONSABILIDAD: Hazlo tuyo. Los propietarios construyen cosas y crean valor así que tome medidas y sea responsable.<br> 
+          OPTIMISMO: ¿Y sí? Desafiamos el pensamiento, creamos la posibilidad de la creatividad y la innovación para mejorar las cosas.<br> 
+          COLABORACIÓN: Comparte. Rompemos paradigmas, fomentando la colaboración.<br> 
+          TENACIDAD: Soñamos en grande, moviéndonos rápido. Las grandes ideas nacen cuando nos desafiamos a nosotros mismos y nos preguntamos "¿Cómo podemos tener un mayor impacto?"<br> 
+          DEVOCIÓN: Da el 121%. No sólo damos el 100% damos un esfuerzo extra que va "más allá".<br> 
+          ACTITUD: Querer es poder, llegamos lejos. Una actitud positiva siempre nos motiva a tener grandes logros y podremos alcanzar las metas que deseemos.                       
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="privacidad" class="section">Aviso de Privacidad</div>
+  <div id="etica" class="section">Código de Ética</div>
+  <div id="franquicia" class="section">Contenido de Adquiere una Franquicia</div>
+  <footer class="footer">
+    <a href="#vision">Visión, Misión y Valores</a>
+    <a href="#privacidad">Aviso de Privacidad</a>
+    <a href="#etica">Código de Ética</a>
+  </footer>
+</body>
+</html>

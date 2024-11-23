@@ -1,39 +1,126 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Century 21 - Nosotros</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Century 21 México</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden; /* Elimina el scroll vertical */
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: #000;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .socials img {
+      height: 20px;
+      margin-left: 15px;
+    }
+
+    .main-content {
+      position: relative;
+      height: calc(100% - 70px); /* Resta la altura del header */
+      background: url('images/condominio.png') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* Alinea los elementos al inicio */
+    }
+
+    .logo-overlay {
+      margin-top: 50px; /* Espacio debajo del header */
+      text-align: center;
+    }
+
+    .logo-overlay img {
+      max-width: 50%;
+      height: auto;
+    }
+
+    .text-content {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      max-width: 400px;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .text-content p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Nosotros</a></li>
-                <li><a href="busqueda.html">Búsqueda</a></li>
-                <li><a href="contacto.html">Contáctanos</a></li>
-                <li><a href="admin.html">Administración</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="about">
-            <h1>Bienvenido a Century 21</h1>
-            <p>Desafiamos la mediocridad y damos el 121% en todo lo que hacemos.</p>
-        </section>
-        <section class="values">
-            <h2>Valores</h2>
-            <ul>
-                <li>Persistencia</li>
-                <li>Responsabilidad</li>
-                <li>Optimismo</li>
-                <li>Colaboración</li>
-            </ul>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Century 21 México. Todos los derechos reservados.</p>
-    </footer>
+  <header class="header">
+    <div class="logo"> 
+      <img src="images/centuryLogo.png" alt="Century 21 Logo">
+    </div>
+    <nav class="nav">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="busqueda.html">Búsqueda</a></li>
+        <li><a href="admin.html">Administración</a></li>
+        <li><a href="contacto.html">Contáctanos</a></li>
+      </ul>
+    </nav>
+    <div class="socials">
+      <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+      <a href="#"><img src="images/whatsapp.png" alt="WhatsApp"></a>
+      <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+    </div>
+  </header>
+  <main class="main-content">
+    <!-- Imagen del logo centrado, ajustado con margen superior -->
+    <div class="logo-overlay">
+      <img src="images/centuryLogoMexico.png" alt="Century 21 México">
+    </div>
+    <!-- Texto en la esquina inferior izquierda -->
+    <div class="text-content">
+      <p>
+        Sólo la marca CENTURY 21<sup>®</sup> tiene la escala y la reputación para liderar la industria de bienes raíces hacia el futuro. Mientras que otros se enfocan simplemente en facilitar una transacción, los asesores de CENTURY 21<sup>®</sup> creen en el valor de brindar experiencias extraordinarias desafiando la mediocridad y siempre otorgando el 121%.
+      </p>
+    </div>
+  </main>
 </body>
 </html>
+
+ 
