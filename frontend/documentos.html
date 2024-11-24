@@ -1,38 +1,142 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Documentos</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Documentos - Century 21 México</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: #000;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      background-color: #1e1e1e;
+    }
+
+    h1, h2 {
+      color: #8a724a;
+    }
+
+    section {
+      margin-bottom: 30px;
+    }
+
+    form {
+      background-color: #2a2a2a;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    form label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    form input, form button {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #3a3a3a;
+      color: white;
+    }
+
+    form input::placeholder {
+      color: #aaa;
+    }
+
+    form button {
+      background-color: #8a724a;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #735a36;
+    }
+
+    #document-list {
+      background-color: #2a2a2a;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Gestión de Documentos</h1>
-        <nav>
-            <ul>
-                <li><a href="panel.html">Propiedades</a></li>
-                <li><a href="transacciones.html">Transacciones</a></li>
-                <li><a href="documentos.html">Documentos</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h2>Subir Documento</h2>
-            <form id="document-form" enctype="multipart/form-data">
-                <input type="file" name="document" required>
-                <input type="text" name="associated_id" placeholder="ID Asociado" required>
-                <button type="submit">Subir</button>
-            </form>
-        </section>
-        <section>
-            <h2>Listado de Documentos</h2>
-            <div id="document-list">
-                <!-- Documentos se cargarán aquí -->
-            </div>
-        </section>
-    </main>
-    <script src="js/documentos.js"></script>
+  <header class="header">
+    <div class="logo"> 
+      <img src="images/centuryLogo.png" alt="Century 21 Logo">
+    </div>
+    <nav class="nav">
+      <ul>
+        <li><a href="panel.html">Propiedades</a></li>
+        <li><a href="transacciones.html">Transacciones</a></li>
+        <li><a href="documentos.html">Documentos</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="main-content">
+    <section>
+      <h2>Subir Documento</h2>
+      <form id="document-form" enctype="multipart/form-data">
+        <label for="document">Seleccionar archivo:</label>
+        <input type="file" id="document" name="document" required>
+        
+        <label for="associated-id">ID Asociado:</label>
+        <input type="text" id="associated-id" name="associated_id" placeholder="ID Asociado" required>
+        
+        <button type="submit">Subir</button>
+      </form>
+    </section>
+    <section>
+      <h2>Listado de Documentos</h2>
+      <div id="document-list">
+        <p>Aún no hay documentos registrados.</p>
+      </div>
+    </section>
+  </main>
+  <!--<script src="js/documentos.js"></script>-->
 </body>
 </html>

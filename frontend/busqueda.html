@@ -1,11 +1,118 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Century 21 - Búsqueda</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Header */
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #000;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        nav ul li a.active {
+            border-bottom: 2px solid gold;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .social-icons a img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Main */
+        .search {
+            padding: 20px;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .filters div {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .filters button {
+            align-self: flex-end;
+            /* Alinea el botón al lado derecho */
+            height: 40px;
+            padding: 0 15px;
+            cursor: pointer;
+            background-color: #000;
+            color: white;
+            border: none;
+            font-weight: bold;
+        }
+
+        .filters button:hover {
+            background-color: #444;
+        }
+
+        .results {
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #000;
+            color: white;
+            font-size: 14px;
+        }
+    </style>
 </head>
+
 <body>
     <header>
         <nav>
@@ -13,8 +120,8 @@
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="nosotros.html">Nosotros</a></li>
                 <li><a href="busqueda.html">Búsqueda</a></li>
-                <li><a href="admin.html">Administración</a></li>
                 <li><a href="contacto.html">Contáctanos</a></li>
+                <li><a href="admin.html">Administración</a></li>
             </ul>
         </nav>
     </header>
@@ -22,26 +129,41 @@
         <section class="search">
             <h1>Encuentra tu Propiedad</h1>
             <form id="search-form">
-                <label for="location">Ubicación:</label>
-                <input type="text" id="location" name="location">
-                
-                <label for="price-min">Precio Mínimo:</label>
-                <input type="number" id="price-min" name="price-min" placeholder="Mínimo">
-
-                <label for="price-max">Precio Máximo:</label>
-                <input type="number" id="price-max" name="price-max" placeholder="Máximo">
-
-                <label for="type">Tipo de Propiedad:</label>
-                <select id="type" name="type">
-                    <option value="Casa">Casa</option>
-                    <option value="Departamento">Departamento</option>
-                    <option value="Terreno">Terreno</option>
-                </select>
-                <button type="submit">Buscar</button>
+                <div class="filters">
+                    <div>
+                        <label for="location">Ubicación:</label>
+                        <input type="text" id="location" name="location" placeholder="Ej. Ciudad de México">
+                    </div>
+                    <div>
+                        <label for="price-min">Precio Mínimo:</label>
+                        <input type="number" id="price-min" name="price-min" placeholder="Desde">
+                    </div>
+                    <div>
+                        <label for="price-max">Precio Máximo:</label>
+                        <input type="number" id="price-max" name="price-max" placeholder="Hasta">
+                    </div>
+                    <div>
+                        <label for="type">Tipo:</label>
+                        <select id="type" name="type">
+                            <option value="">Selecciona</option>
+                            <option value="Casa">Casa</option>
+                            <option value="Departamento">Departamento</option>
+                            <option value="Terreno">Terreno</option>
+                        </select>
+                    </div>
+                    <!-- Botón al lado derecho -->
+                    <button type="submit">Buscar</button>
+                </div>
             </form>
         </section>
-        <section class="results" id="results"></section>
+        <section class="results" id="results">
+            <!-- Las tarjetas de las propiedades aparecerán aquí -->
+        </section>
     </main>
+    <footer>
+        <p>© 2024 Century 21 México. Todos los derechos reservados.</p>
+    </footer>
     <script src="js/busqueda.js"></script>
 </body>
+
 </html>
