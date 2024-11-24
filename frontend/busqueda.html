@@ -24,7 +24,7 @@
             color: white;
         }
 
-        .logo {
+        .logo img {
             height: 40px;
         }
 
@@ -33,6 +33,7 @@
             display: flex;
             gap: 20px;
             margin: 0;
+            padding: 0;
         }
 
         nav ul li {
@@ -46,7 +47,9 @@
         }
 
         nav ul li a.active {
-            border-bottom: 2px solid gold;
+            /* Eliminamos el borde amarillo */
+            border-bottom: none;
+            color: white;
         }
 
         .social-icons {
@@ -83,7 +86,6 @@
 
         .filters button {
             align-self: flex-end;
-            /* Alinea el botón al lado derecho */
             height: 40px;
             padding: 0 15px;
             cursor: pointer;
@@ -115,15 +117,25 @@
 
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-                <li><a href="busqueda.html">Búsqueda</a></li>
-                <li><a href="contacto.html">Contáctanos</a></li>
-                <li><a href="admin.html">Administración</a></li>
-            </ul>
-        </nav>
+        <div class="header-container">
+            <div class="logo">
+                <img src="images/centuryLogo.png" alt="Century 21 Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="busqueda.html" class="active">Búsqueda</a></li>
+                    <li><a href="contacto.html">Contáctanos</a></li>
+                    <li><a href="admin.html">Administración</a></li>
+                </ul>
+            </nav>
+            <div class="social-icons">
+                <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+                <a href="#"><img src="images/whatsapp.png" alt="WhatsApp"></a>
+                <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+            </div>
+        </div>
     </header>
     <main>
         <section class="search">
@@ -151,7 +163,6 @@
                             <option value="Terreno">Terreno</option>
                         </select>
                     </div>
-                    <!-- Botón al lado derecho -->
                     <button type="submit">Buscar</button>
                 </div>
             </form>
@@ -163,7 +174,6 @@
     <footer>
         <p>© 2024 Century 21 México. Todos los derechos reservados.</p>
     </footer>
-    <script src="js/busqueda.js"></script>
 </body>
 
 </html>
