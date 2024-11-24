@@ -5,6 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reportes</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f5ef;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 10px;
+            border: none;
+            background-color: #d4af37;
+            color: #000;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #c89f2f;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -14,21 +77,66 @@
                 <li><a href="citas.html">Citas</a></li>
                 <li><a href="panel.html">Propiedades</a></li>
                 <li><a href="transacciones.html">Transacciones</a></li>
-                <li><a href="agentes.html">Registro de agentes</a> </li>
+                <li><a href="agentes.html">Registro de agentes</a></li>
                 <li><a href="reportes.html">Reportes</a></li>
-                
             </ul>
         </nav>
     </header>
     <main>
         <section>
             <h2>Reporte de Ventas y Alquileres</h2>
+            <p>Seleccione el formato en el que desea descargar el reporte.</p>
             <button id="download-sales-pdf">Descargar PDF</button>
             <button id="download-sales-excel">Descargar Excel</button>
         </section>
     </main>
-    <script src="js/reportes.js"></script>
-    <script src="js/common.js"></script>
+    <script>
+        // URL base del backend
+        const BASE_URL = "/api/reports/sales";
 
+        // Función para descargar el PDF
+        document.getElementById("download-sales-pdf").addEventListener("click", () => {
+            fetch(`${BASE_URL}/pdf`, {
+                method: "GET",
+                credentials: "include" // Enviar cookies para autenticación
+            })
+                .then(response => {
+                    if (!response.ok) throw new Error("Error al generar el PDF");
+                    return response.blob();
+                })
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement("a");
+                    a.href = url;
+                    a.download = "reporte_ventas.pdf";
+                    a.click();
+                })
+                .catch(error => {
+                    alert("Error: " + error.message);
+                });
+        });
+
+        // Función para descargar el Excel
+        document.getElementById("download-sales-excel").addEventListener("click", () => {
+            fetch(`${BASE_URL}/excel`, {
+                method: "GET",
+                credentials: "include" // Enviar cookies para autenticación
+            })
+                .then(response => {
+                    if (!response.ok) throw new Error("Error al generar el Excel");
+                    return response.blob();
+                })
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement("a");
+                    a.href = url;
+                    a.download = "reporte_ventas.xlsx";
+                    a.click();
+                })
+                .catch(error => {
+                    alert("Error: " + error.message);
+                });
+        });
+    </script>
 </body>
 </html>
