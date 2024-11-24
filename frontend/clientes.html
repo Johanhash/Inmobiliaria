@@ -5,6 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Clientes</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f5ef;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav ul li {
+            margin: 0 10px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        form {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            resize: none;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #d4af37;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #c89f2f;
+        }
+
+        #client-list {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #client-list h2 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        #client-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #client-list ul li {
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #333;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -31,10 +136,48 @@
         <section>
             <h2>Listado de Clientes</h2>
             <div id="client-list">
-                <!-- Clientes se cargarán aquí -->
+                <h2>Clientes Registrados</h2>
+                <ul id="registered-clients">
+                    <!-- Aquí se cargarán los clientes registrados -->
+                </ul>
             </div>
         </section>
     </main>
-    <script src="js/clientes.js"></script>
+    <script>
+        // Simulación de base de datos de clientes registrados
+        const clients = [];
+
+        // Evento para registrar un cliente
+        document.getElementById("client-form").addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            // Obtener los valores del formulario
+            const name = e.target.name.value;
+            const email = e.target.email.value;
+            const phone = e.target.phone.value;
+            const comments = e.target.comments.value;
+
+            // Agregar cliente a la lista simulada
+            clients.push({ name, email, phone, comments });
+
+            // Limpiar el formulario
+            e.target.reset();
+
+            // Actualizar la lista de clientes registrados
+            updateClientList();
+        });
+
+        // Actualizar la lista de clientes registrados
+        function updateClientList() {
+            const clientList = document.getElementById("registered-clients");
+            clientList.innerHTML = "";
+
+            clients.forEach((client, index) => {
+                const li = document.createElement("li");
+                li.textContent = `${index + 1}. Nombre: ${client.name}, Correo: ${client.email}, Teléfono: ${client.phone}, Comentarios: ${client.comments}`;
+                clientList.appendChild(li);
+            });
+        }
+    </script>
 </body>
 </html>
