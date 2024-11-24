@@ -5,6 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Agentes</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f5ef;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav ul li {
+            margin: 0 10px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        form {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #d4af37;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #c89f2f;
+        }
+
+        a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        #agent-list {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #agent-list h1 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        #agent-list p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -14,7 +119,7 @@
                 <li><a href="citas.html">Citas</a></li>
                 <li><a href="panel.html">Propiedades</a></li>
                 <li><a href="transacciones.html">Transacciones</a></li>
-                <li><a href="agentes.html">Registro de agentes</a> </li>
+                <li><a href="agentes.html">Registro de agentes</a></li>
                 <li><a href="reportes.html">Reportes</a></li>
             </ul>
         </nav>
@@ -32,9 +137,8 @@
         <section>
             <h2>Listado de Agentes</h2>
             <div id="agent-list">
-                <!-- Agentes se cargarán aquí -->
                 <h1>Inicia Sesión</h1>
-                <p>Si eres agente inmobiliario, inicia sesión aquí:.</p>
+                <p>Si eres agente inmobiliario, inicia sesión aquí para gestionar tus propiedades, ventas y clientes.</p>
                 <form id="agent-login-form">
                     <label for="agent-email">Correo:</label>
                     <input type="email" id="agent-email" name="email" required>
@@ -44,11 +148,9 @@
                     <button type="submit">Iniciar Sesión</button>
                 </form>
             </div>
-        </div>
-    </section>
+        </section>
     </main>
-    <script src="js/agentes.js"></script>
+    <!-- <script src="js/agentes.js"></script> -->
     <script src="js/common.js"></script>
-
 </body>
 </html>
