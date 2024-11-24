@@ -56,6 +56,11 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         input[type="text"],
@@ -81,33 +86,28 @@
             background-color: #c89f2f;
         }
 
-        a {
-            color: #d4af37;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
         #agent-list {
-            background-color: #1a1a1a;
-            color: #fff;
+            background-color: #fff;
             padding: 20px;
             border-radius: 10px;
             margin-top: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        #agent-list h1 {
-            color: #fff;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+        #agent-list table {
+            width: 100%;
+            border-collapse: collapse;
         }
 
-        #agent-list p {
-            font-size: 1rem;
-            margin-bottom: 20px;
+        #agent-list th, #agent-list td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        #agent-list th {
+            background-color: #d4af37;
+            color: #000;
         }
     </style>
 </head>
@@ -137,20 +137,51 @@
         <section>
             <h2>Listado de Agentes</h2>
             <div id="agent-list">
-                <h1>Inicia Sesión</h1>
-                <p>Si eres agente inmobiliario, inicia sesión aquí para gestionar tus propiedades, ventas y clientes.</p>
-                <form id="agent-login-form">
-                    <label for="agent-email">Correo:</label>
-                    <input type="email" id="agent-email" name="email" required>
-                    <label for="agent-password">Contraseña:</label>
-                    <input type="password" id="agent-password" name="password" required>
-                    <a href="#">¿Olvidó su contraseña?</a>
-                    <button type="submit">Iniciar Sesión</button>
-                </form>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Correo Electrónico</th>
+                        </tr>
+                    </thead>
+                    <tbody id="agent-table-body">
+                        <!-- Aquí se llenarán los agentes registrados -->
+                    </tbody>
+                </table>
             </div>
         </section>
     </main>
-    <!-- <script src="js/agentes.js"></script> -->
-    <!-- <script src="js/common.js"></script> -->
+    <script>
+        const agentForm = document.getElementById("agent-form");
+        const agentTableBody = document.getElementById("agent-table-body");
+
+        let agents = [];
+
+        // Manejar el registro de agentes
+        agentForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            const formData = new FormData(agentForm);
+            const agent = {
+                name: formData.get("name"),
+                email: formData.get("email"),
+            };
+            agents.push(agent);
+            renderAgents();
+            agentForm.reset();
+        });
+
+        // Renderizar agentes en la tabla
+        function renderAgents() {
+            agentTableBody.innerHTML = "";
+            agents.forEach(agent => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${agent.name}</td>
+                    <td>${agent.email}</td>
+                `;
+                agentTableBody.appendChild(row);
+            });
+        }
+    </script>
 </body>
 </html>
