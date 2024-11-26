@@ -12,5 +12,3 @@ router.put('/:id', authenticate, authorize(['Admin']), propertiesController.upda
 router.delete('/:id', authenticate, authorize(['Admin']), propertiesController.deleteProperty); // Solo para administradores
 
 module.exports = router;
-
-

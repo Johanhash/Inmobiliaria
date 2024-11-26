@@ -3,6 +3,18 @@ const Transactions = require('../models/transactionsModel');
 const PDFDocument = require('pdfkit');
 const ExcelJS = require('exceljs');
 
+exports.getFilteredProperties = (req, res) => {
+    const filters = req.body;
+    Properties.getFiltered(filters, (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error al obtener propiedades filtradas.' });
+        }
+        res.json(results);
+    });
+};
+
+// Otras declaraciones y código del controlador
+
 // Generar reporte de ventas en PDF
 exports.generateSalesPDF = async (req, res) => {
     Transactions.getAll(null, (err, transactions) => {

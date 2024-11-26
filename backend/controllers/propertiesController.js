@@ -41,15 +41,11 @@ exports.getAllProperties = (req, res) => {
 
 
 exports.getFilteredProperties = (req, res) => {
-    const filters = {
-        location: req.body.location || null,
-        priceMin: req.body.priceMin || null,
-        priceMax: req.body.priceMax || null,
-        type: req.body.type || null,
-    };
-
+    const filters = req.body;
     Properties.getFiltered(filters, (err, results) => {
-        if (err) return res.status(500).json({ error: err.message });
+        if (err) {
+            return res.status(500).json({ error: 'Error al obtener propiedades filtradas.' });
+        }
         res.json(results);
     });
 };

@@ -10,6 +10,11 @@ const app = express();
 
 // Middlewares
 app.use(bodyParser.json());
+
+// Servir archivos estáticos desde la carpeta 'uploads'
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Rutas y otros middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Configurar CORS (opcional, si es necesario)
@@ -43,7 +48,6 @@ app.use('/api/appointments', appointmentsRoutes);
 app.use('/api/properties', propertiesRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/transactions', transactionsRoutes);
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Nuevo endpoint para registro combinado de cliente y transacción
 const transactionsController = require('./controllers/transactionsController');
@@ -52,5 +56,5 @@ app.post('/api/transactions/with-client', transactionsController.createTransacti
 // Servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
