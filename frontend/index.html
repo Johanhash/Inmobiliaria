@@ -10,18 +10,20 @@
       padding: 0;
       box-sizing: border-box;
     }
-
-    html, body {
+  
+    html,
+    body {
       height: 100%;
-      overflow: hidden; /* Elimina el scroll vertical */
+      overflow: hidden;
+      /* Elimina el scroll vertical */
     }
-
+  
     body {
       font-family: Arial, sans-serif;
       background-color: #121212;
       color: white;
     }
-
+  
     .header {
       display: flex;
       justify-content: space-between;
@@ -30,11 +32,11 @@
       background-color: #000;
       height: 73px;
     }
-
+  
     .logo img {
-      height: 48px;
+      height: 50px;
     }
-
+  
     .nav ul {
       list-style: none;
       display: flex;
@@ -42,45 +44,49 @@
       padding: 0;
       margin: 0;
     }
-
+  
     .nav ul li a {
       color: white;
       text-decoration: none;
       font-weight: bold;
       font-size: 16px;
     }
-    
+  
     .header .socials {
       display: flex;
       align-items: center;
-      gap: 11px;
-      /* Espaciado entre íconos sociales */
+      gap: 80px;
+      /* Incrementar el espaciado entre los íconos sociales */
     }
-
+  
     .socials img {
       height: 26px;
-      margin-left: 26px;
+      margin-left: 0;
+      /* Ajuste del margen interno */
     }
-
+  
     .main-content {
       position: relative;
-      height: calc(100% - 70px); /* Resta la altura del header */
+      height: calc(100% - 70px);
+      /* Resta la altura del header */
       background: url('images/condominio.png') no-repeat center center/cover;
       display: flex;
       justify-content: center;
-      align-items: flex-start; /* Alinea los elementos al inicio */
+      align-items: flex-start;
+      /* Alinea los elementos al inicio */
     }
-
+  
     .logo-overlay {
-      margin-top: 50px; /* Espacio debajo del header */
+      margin-top: 50px;
+      /* Espacio debajo del header */
       text-align: center;
     }
-
+  
     .logo-overlay img {
-      max-width: 50%;
+      max-width: 100%;
       height: auto;
     }
-
+  
     .text-content {
       position: absolute;
       bottom: 20px;
@@ -90,12 +96,13 @@
       padding: 20px;
       border-radius: 10px;
     }
-
+  
     .text-content p {
       font-size: 14px;
       line-height: 1.5;
     }
   </style>
+
 </head>
 <body>
   <header class="header">
@@ -113,10 +120,11 @@
         <li><a href="admin.html">Administración</a></li>
       </ul>
     </nav>
-    <div class="socials">
-      <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+    <div class="social-icons">
+      <a href="https://www.youtube.com/@C21Mexico" target="_blank">
+        <img src="images/youtube.png" alt="YouTube"></a>
       <a href="#"><img src="images/whatsapp.png" alt="WhatsApp"></a>
-      <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+      <a href="https://www.facebook.com/C21Mex/" target="_blank"><img src="images/facebook.png" alt="Facebook"></a>
     </div>
   </header>
   <main class="main-content">
