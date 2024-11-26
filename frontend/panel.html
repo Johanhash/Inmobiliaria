@@ -139,6 +139,13 @@
         <label for="description">Descripción:</label>
         <textarea name="description" placeholder="Descripción" required></textarea>
 
+        <label for="status">Estatus:</label>
+        <select name="status" required>
+          <option value="Disponible">Disponible</option>
+          <option value="Vendida">Vendida</option>
+          <option value="En Proceso">En Proceso</option>
+        </select>
+
         <label for="bedrooms">Número de Recámaras:</label>
         <input type="number" name="bedrooms" placeholder="Número de Recámaras" min="0" required>
 
@@ -155,8 +162,7 @@
         <textarea name="features" placeholder="Características adicionales (separadas por comas)"></textarea>
 
         <label for="images">Imágenes de la Propiedad:</label>
-        <input type="file" name="images" id="images" accept="image/*" multiple required>
-
+        <input type="file" name="images" multiple>
         <button type="submit">Registrar Propiedad</button>
       </form>
 

@@ -38,6 +38,7 @@ const appointmentsRoutes = require('./routes/appointments');
 const propertiesRoutes = require('./routes/properties');
 const usersRoutes = require('./routes/users');
 const transactionsRoutes = require('./routes/transactions');
+const contactRoutes = require('./routes/contact'); // Importar la nueva ruta de contacto
 
 // Definir las rutas principales
 app.use('/api/reports', reportsRoutes);
@@ -48,6 +49,7 @@ app.use('/api/appointments', appointmentsRoutes);
 app.use('/api/properties', propertiesRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/transactions', transactionsRoutes);
+app.use('/api/contact', contactRoutes); // Usar la nueva ruta de contacto
 
 // Nuevo endpoint para registro combinado de cliente y transacción
 const transactionsController = require('./controllers/transactionsController');

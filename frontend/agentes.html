@@ -151,37 +151,6 @@
             </div>
         </section>
     </main>
-    <script>
-        const agentForm = document.getElementById("agent-form");
-        const agentTableBody = document.getElementById("agent-table-body");
-
-        let agents = [];
-
-        // Manejar el registro de agentes
-        agentForm.addEventListener("submit", function(event) {
-            event.preventDefault();
-            const formData = new FormData(agentForm);
-            const agent = {
-                name: formData.get("name"),
-                email: formData.get("email"),
-            };
-            agents.push(agent);
-            renderAgents();
-            agentForm.reset();
-        });
-
-        // Renderizar agentes en la tabla
-        function renderAgents() {
-            agentTableBody.innerHTML = "";
-            agents.forEach(agent => {
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                    <td>${agent.name}</td>
-                    <td>${agent.email}</td>
-                `;
-                agentTableBody.appendChild(row);
-            });
-        }
-    </script>
+    <script src="js/agentes.js"></script>
 </body>
 </html>

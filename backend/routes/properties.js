@@ -5,10 +5,11 @@ const { authenticate } = require('../middleware/auth');
 const authorize = require('../middleware/authorize');
 
 // Rutas para propiedades
-router.get('/', propertiesController.getAllProperties); // Ruta pública para obtener todas las propiedades
-router.post('/filter', propertiesController.getFilteredProperties); // Ruta para buscar propiedades con filtros
-router.post('/', authenticate, authorize(['Admin']), propertiesController.createProperty); // Solo para administradores
-router.put('/:id', authenticate, authorize(['Admin']), propertiesController.updateProperty); // Solo para administradores
-router.delete('/:id', authenticate, authorize(['Admin']), propertiesController.deleteProperty); // Solo para administradores
+router.get('/', propertiesController.getAllProperties);
+router.post('/', authenticate, authorize(['Admin']), propertiesController.createProperty);
+router.post('/filter', propertiesController.getFilteredProperties); // Filtrar propiedades
+router.get('/:id', propertiesController.getPropertyById); // Obtener propiedad por ID
+router.put('/:id', authenticate, authorize(['Admin']), propertiesController.updateProperty); // Actualizar propiedad (solo para administradores)
+router.delete('/:id', authenticate, authorize(['Admin']), propertiesController.deleteProperty); // Eliminar propiedad (solo para administradores)
 
 module.exports = router;
