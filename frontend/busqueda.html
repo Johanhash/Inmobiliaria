@@ -25,7 +25,8 @@
         }
 
         .logo img {
-            height: 40px;
+            height: 50px;
+            /* Tamaño unificado */
         }
 
         nav ul {
@@ -47,7 +48,6 @@
         }
 
         nav ul li a.active {
-            /* Eliminamos el borde amarillo */
             border-bottom: none;
             color: white;
         }
@@ -58,9 +58,11 @@
             align-items: center;
         }
 
-        .social-icons a img {
+        .social-icons img {
             width: 24px;
+            /* Tamaño unificado */
             height: 24px;
+            /* Tamaño unificado */
         }
 
         /* Main */
@@ -105,29 +107,29 @@
         }
 
         .property-container {
-        display: flex;
-        align-items: flex-start; /* Alinea los elementos al inicio del contenedor */
-        margin-bottom: 20px; /* Espacio entre las tarjetas de propiedades */
-        border: 1px solid #ddd; /* Borde alrededor del contenedor */
-        padding: 10px; /* Espacio interno del contenedor */
-        border-radius: 5px; /* Bordes redondeados */
-        background-color: #f9f9f9; /* Color de fondo */
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
         }
 
         .property-image-container {
-        flex: 0 0 150px; /* Ancho fijo para la imagen */
-        margin-right: 20px; /* Espacio entre la imagen y el texto */
+            flex: 0 0 150px;
+            margin-right: 20px;
         }
 
         .property-image {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 5px; /* Bordes redondeados para la imagen */
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 5px;
         }
 
         .property-details {
-        flex: 1; /* El texto ocupa el resto del espacio disponible */
+            flex: 1;
         }
 
         /* Footer */
@@ -144,7 +146,7 @@
 <body>
     <header>
         <div class="header-container">
-            <div class="logo"> 
+            <div class="logo">
                 <a href="index.html">
                     <img src="images/centuryLogo.png" alt="Century 21 Logo">
                 </a>
@@ -201,7 +203,8 @@
                     </div>
                     <div>
                         <label for="parking_spaces">Estacionamientos:</label>
-                        <input type="number" id="parking_spaces" name="parking_spaces" placeholder="Número de estacionamientos">
+                        <input type="number" id="parking_spaces" name="parking_spaces"
+                            placeholder="Número de estacionamientos">
                     </div>
                     <button type="submit">Buscar</button>
                 </div>
