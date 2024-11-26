@@ -1,3 +1,17 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const logoutButton = document.getElementById('logout-btn');
+
+    if (logoutButton) {
+        logoutButton.addEventListener('click', () => {
+            // Eliminar el token de sesión
+            sessionStorage.removeItem('token');
+            
+            // Redirigir al index.html
+            window.location.href = 'index.html';
+        });
+    }
+});
+
 document.getElementById('admin-form').addEventListener('submit', async function (e) {
     e.preventDefault();
 

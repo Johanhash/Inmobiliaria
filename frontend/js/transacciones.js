@@ -162,11 +162,28 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <p>Tipo: ${transaction.transaction_type}</p>
                         <p>Monto: ${transaction.amount}</p>
                         <p>Fecha: ${transaction.date}</p>
-                        <button onclick="downloadContract(${transaction.id})">Descargar Contrato</button>
+                        <button class="download-btn" onclick="downloadContract(${transaction.id})">Descargar Contrato</button>
                     </div>
                 `
                 )
                 .join('');
+
+            // Agregar estilos al botón
+            const style = document.createElement('style');
+            style.innerHTML = `
+                .download-btn {
+                    background-color: #8a724a;
+                    color: white;
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+                .download-btn:hover {
+                    background-color: #45a049;
+                }
+            `;
+            document.head.appendChild(style);
         } catch (error) {
             console.error('Error al cargar transacciones:', error);
         }

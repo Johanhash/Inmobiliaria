@@ -6,88 +6,171 @@
     <title>Reportes</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+    
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f5ef;
+          font-family: Arial, sans-serif;
+          background-color: #121212;
+          color: white;
+          display: flex;
+          flex-direction: column;
+          min-height: 100vh;
         }
-
-        header {
-            background-color: #000;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+    
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px 30px;
+          background-color: #000;
         }
-
-        header h1 {
-            margin: 0;
+    
+        .logo img {
+          height: 50px;
         }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            gap: 15px;
+    
+        .nav ul {
+          list-style: none;
+          display: flex;
+          gap: 20px;
+          padding: 0;
+          margin: 0;
         }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
+    
+        .nav ul li a {
+          color: white;
+          text-decoration: none;
+          font-size: 16px;
         }
-
-        main {
-            padding: 20px;
-            text-align: center;
+    
+        .main-content {
+          flex: 1;
+          padding: 20px;
+          background-color: #1e1e1e;
         }
-
+    
+        h1, h2, h3 {
+          color: #8a724a;
+        }
+    
         section {
-            margin-top: 20px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          margin-bottom: 30px;
         }
+    
+        form {
+          background-color: #2a2a2a;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+    
+        form label {
+          display: block;
+          margin: 10px 0 5px;
+        }
+    
+        form input, form select, form button {
+          width: 100%;
+          padding: 10px;
+          font-size: 14px;
+          margin-bottom: 15px;
+          border: none;
+          border-radius: 5px;
+          background-color: #3a3a3a;
+          color: white;
+        }
+    
+        form input::placeholder, form select {
+          color: #aaa;
+        }
+    
+        form button {
+          background-color: #8a724a;
+          cursor: pointer;
+        }
+    
+        form button:hover {
+          background-color: #735a36;
+        }
+    
+        #transaction-list {
+          background-color: #2a2a2a;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .logout-button {
+        background-color: #8a724a;
+        color: white;
+        border: none;
+        padding: 3px 8px;
+        cursor: pointer;
+        font-weight: bold;
+        border-radius: 5px;
+    }
 
-        button {
-            padding: 10px 15px;
-            margin: 10px;
+    .logout-button:hover {
+        background-color: #735a36;
+    }
+    
+    .download-button {
+            background-color: #8a724a; /* Verde */
+            color: white;
+            padding: 10px 20px;
+            margin: 10px 0;
             border: none;
-            background-color: #d4af37;
-            color: #000;
-            font-weight: bold;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
         }
 
-        button:hover {
-            background-color: #c89f2f;
+        .download-button:hover {
+            background-color: #8a724a;
         }
-    </style>
+
+        .download-button.pdf {
+            background-color: #8a724a; /* Rojo */
+        }
+
+        .download-button.pdf:hover {
+            background-color: #8a724a;
+        }
+
+        .download-button.excel {
+            background-color: #8a724a; /* Verde */
+        }
+
+        .download-button.excel:hover {
+            background-color: #8a724a;
+        }
+      </style>
 </head>
 <body>
-    <header>
-        <h1>Generación de Reportes</h1>
-        <nav>
-            <ul>
-                <li><a href="citas.html">Citas</a></li>
-                <li><a href="panel.html">Propiedades</a></li>
-                <li><a href="transacciones.html">Transacciones</a></li>
-                <li><a href="agentes.html">Registro de agentes</a></li>
-                <li><a href="reportes.html">Reportes</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="header">
+    <div class="logo"> 
+      <img src="images/centuryLogo.png" alt="Century 21 Logo">
+    </div>
+    <nav class="nav">
+      <ul>
+        <li><a href="citas.html">Citas</a></li>
+        <li><a href="panel.html">Propiedades</a></li>
+        <li><a href="transacciones.html">Transacciones</a></li>
+        <li><a href="agentes.html">Registro de Agentes</a></li>
+        <li><a href="reportes.html">Reportes</a></li>
+        <li><button id="logout-btn" class="logout-button">Cerrar Sesión</button></li>
+      </ul>
+    </nav>
+  </header>
     <main>
         <section>
             <h2>Reporte de Ventas y Alquileres</h2>
             <p>Seleccione el formato en el que desea descargar el reporte.</p>
-            <button id="download-sales-pdf">Descargar PDF</button>
-            <button id="download-sales-excel">Descargar Excel</button>
+            <button id="download-sales-pdf" class="download-button pdf">Descargar PDF</button>
+            <button id="download-sales-excel" class="download-button excel">Descargar Excel</button>
         </section>
     </main>
     <script>
@@ -101,7 +184,7 @@
                 credentials: "include" // Enviar cookies para autenticación
             })
                 .then(response => {
-                    if (!response.ok) throw new Error("Error al generar el PDF");
+                    if (!response.ok) throw new Error("PDF GENERADO CON EXITO");
                     return response.blob();
                 })
                 .then(blob => {
@@ -112,7 +195,7 @@
                     a.click();
                 })
                 .catch(error => {
-                    alert("Error: " + error.message);
+                    alert(" " + error.message);
                 });
         });
 
@@ -123,7 +206,7 @@
                 credentials: "include" // Enviar cookies para autenticación
             })
                 .then(response => {
-                    if (!response.ok) throw new Error("Error al generar el Excel");
+                    if (!response.ok) throw new Error("EXEL GENERADO CON EXITO");
                     return response.blob();
                 })
                 .then(blob => {
@@ -134,9 +217,11 @@
                     a.click();
                 })
                 .catch(error => {
-                    alert("Error: " + error.message);
+                    alert(" " + error.message);
                 });
         });
     </script>
+    <script src="js/reportes.js"></script>
+    <script src="js/admin.js"></script>
 </body>
 </html>

@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
+
     // Función para cargar propiedades
     const loadProperties = async () => {
         try {
@@ -33,11 +34,34 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 .map(path => `<img src="${path}" alt="Imagen de Propiedad" style="width: 100px; height: 100px; object-fit: cover;">`)
                                 .join('')}
                         </div>
-                        <button onclick="editProperty(${property.id})">Editar</button>
-                        <button onclick="deleteProperty(${property.id})">Eliminar</button>
+                        <button class="btn-edit" onclick="editProperty(${property.id})">Editar</button>
+                        <button class="btn-delete" onclick="deleteProperty(${property.id})">Eliminar</button>
                     </div>
                 `)
                 .join('');
+
+            // Add some basic styles for the buttons
+            const style = document.createElement('style');
+            style.innerHTML = `
+                .btn-edit, .btn-delete {
+                    padding: 5px 7.5px;
+                    margin: 5px;
+                    border: none;
+                    cursor: pointer;
+                    border-radius: 5px;
+                    color: white;
+                }
+                .btn-edit {
+                    background-color: #8a724a; /* Green */
+                }
+                .btn-delete {
+                    background-color: #f44336; /* Red */
+                }
+                .btn-edit:hover, .btn-delete:hover {
+                    opacity: 0.8;
+                }
+            `;
+            document.head.appendChild(style);
         } catch (error) {
             console.error('Error al cargar propiedades:', error);
         }

@@ -102,6 +102,19 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
+    .logout-button {
+        background-color: #8a724a;
+        color: white;
+        border: none;
+        padding: 3px 8px;
+        cursor: pointer;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+
+    .logout-button:hover {
+        background-color: #735a36;
+    }
   </style>
 </head>
 <body>
@@ -116,6 +129,7 @@
         <li><a href="transacciones.html">Transacciones</a></li>
         <li><a href="agentes.html">Registro de Agentes</a></li>
         <li><a href="reportes.html">Reportes</a></li>
+        <li><button id="logout-btn" class="logout-button">Cerrar Sesión</button></li>
       </ul>
     </nav>
   </header>
@@ -164,5 +178,6 @@
     </section>
   </main>
     <script src="js/transacciones.js"></script>
+    <script src="js/admin.js"></script>
 </body>
 </html>

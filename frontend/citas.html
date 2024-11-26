@@ -1,176 +1,179 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro - Century 21 México</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #121212;
-      color: #fff;
-      overflow: hidden; /* Elimina el scroll vertical */
-    }
-
-    .header {
-      background-color: #000;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .header .nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-
-    .header .nav ul li a {
-      color: #fff;
-      text-decoration: none;
-    }
-
-    .header .socials img {
-      height: 20px;
-      margin-left: 15px;
-    }
-
-    .container {
-      display: flex;
-      min-height: calc(100vh - 70px); /* Altura disponible menos el header */
-      background-color: #f5f5f5;
-      color: #000;
-    }
-
-    .form-section {
-      flex: 3; /* La parte izquierda será más ancha */
-      background-color: #ccc;
-      padding: 30px;
-    }
-
-    .form-section h2 {
-      font-size: 24px;
-      margin-bottom: 20px;
-      color: #8a724a;
-    }
-
-    .form-section form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .form-section form input {
-      padding: 10px;
-      font-size: 14px;
-      border: 1px solid #aaa;
-      border-radius: 5px;
-    }
-
-    .form-section form .buttons {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .form-section form .buttons button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .form-section form .buttons .register-btn {
-      background-color: #8a724a;
-      color: #fff;
-    }
-
-    .form-section form .buttons .cancel-btn {
-      background-color: #d9534f;
-      color: #fff;
-    }
-
-    .info-section {
-      flex: 2; /* La parte derecha será más pequeña */
-      background-color: #e6e6e6;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start; /* Texto más arriba */
-      align-items: center;
-    }
-
-    .info-section h3 {
-      font-size: 22px; /* Tamaño más grande */
-      margin-bottom: 15px;
-      color: #000;
-    }
-
-    .info-section p {
-      text-align: center;
-      font-size: 16px;
-      color: #333;
-      margin-bottom: 20px; /* Espaciado entre texto y logo */
-    }
-
-    .info-section img {
-      margin-top: 10px;
-      width: 500px; /* Tamaño del logo más grande */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Citas</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+  
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+  
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        background-color: #000;
+      }
+  
+      .logo img {
+        height: 50px;
+      }
+  
+      .nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        padding: 0;
+        margin: 0;
+      }
+  
+      .nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+      }
+  
+      .main-content {
+        flex: 1;
+        padding: 20px;
+        background-color: #1e1e1e;
+      }
+  
+      h1, h2 {
+        color: #8a724a;
+      }
+  
+      section {
+        margin-bottom: 30px;
+      }
+  
+      form {
+        background-color: #2a2a2a;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      }
+  
+      form label {
+        display: block;
+        margin: 10px 0 5px;
+      }
+  
+      form input, form textarea, form select, form button {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: #3a3a3a;
+        color: white;
+      }
+  
+      form input::placeholder, form textarea::placeholder {
+        color: #aaa;
+      }
+  
+      form button {
+        background-color: #8a724a;
+        cursor: pointer;
+      }
+  
+      form button:hover {
+        background-color: #735a36;
+      }
+  
+      #property-list {
+        background-color: #2a2a2a;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      }
+      .logout-button {
+          background-color: #8a724a;
+          color: white;
+          border: none;
+          padding: 3px 8px;
+          cursor: pointer;
+          font-weight: bold;
+          border-radius: 5px;
+      }
+  
+      .logout-button:hover {
+          background-color: #735a36;
+      }
+    </style>
 </head>
 <body>
   <header class="header">
     <div class="logo">
-      <img src="images/centuryLogo.png" alt="Century 21 Logo" style="height: 50px;">
+      <img src="images/centuryLogo.png" alt="Century 21 Logo">
     </div>
     <nav class="nav">
       <ul>
-        <li><a href="index.html">Nosotros</a></li>
-        <li><a href="busqueda.html">Búsqueda</a></li>
-        <li><a href="admin.html">Administración</a></li>
-        <li><a href="contacto.html">Contáctanos</a></li>
+        <li><a href="citas.html">Citas</a></li>
+        <li><a href="panel.html">Propiedades</a></li>
+        <li><a href="transacciones.html">Transacciones</a></li>
+        <li><a href="agentes.html">Registro de Agentes</a></li>
+        <li><a href="reportes.html">Reportes</a></li>
+        <li><button id="logout-btn" class="logout-button">Cerrar Sesión</button></li>
       </ul>
     </nav>
-    <div class="socials">
-        <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
-        <a href="#"><img src="images/whatsapp.png" alt="WhatsApp"></a>
-        <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
-    </div>
   </header>
-  <main class="container">
-    <div class="form-section">
-      <h2>REGISTRO</h2>
-      <form>
-        <input type="text" placeholder="Nombre(s)*" required>
-        <input type="text" placeholder="Apellidos*" required>
-        <input type="tel" placeholder="Teléfono*" required>
-        <input type="email" placeholder="Email*" required>
-        <input type="text" placeholder="Ocupación*" required>
-        <input type="number" placeholder="Ingreso Mensual*" required>
-        <div class="captcha">
-          <!-- Placeholder para el Captcha -->
-          <!--<p>[Captcha aquí]</p>-->
-        </div>
-        <div class="buttons">
-          <button type="submit" class="register-btn">Registrar</button>
-          <button type="button" class="cancel-btn">Cancelar</button>
-        </div>
-      </form>
-    </div>
-    <div class="info-section">
-      <h3>REGISTRAR CITA DE MUESTRA</h3>
-      <p>Llene los campos con su información para registrarse y poder concretar una cita lo más pronto posible.</p>
-      <img src="images/centuryLogoMexico.png" alt="Century 21 México">
-    </div>
-  </main>
-  <!--<script src="js/citas.js"></script>-->
+  <main>
+    <section>
+        <h2>Registrar Cliente</h2>
+        <form id="client-form">
+          <label for="client-name">Nombre</label>
+          <input type="text" id="client-name" name="name" placeholder="Nombre del cliente" required />
+      
+          <label for="client-email">Correo</label>
+          <input type="email" id="client-email" name="email" placeholder="Correo electrónico" required />
+      
+          <label for="client-phone">Teléfono</label>
+          <input type="tel" id="client-phone" name="phone" placeholder="Teléfono" required />
+            <button type="submit">Registrar Cliente</button>
+        </form>
+    </section>
+    <main>
+        <section>
+            <h2>Registrar Cita</h2>
+            <form id="appointment-form">
+                <select id="client_id" name="client_id" required>
+                    <!-- Opciones de clientes -->
+                </select>
+                <select id="property_id" name="property_id" required>
+                    <!-- Opciones de propiedades -->
+                </select>
+                <select id="agent_id" name="agent_id" required>
+                    <!-- Opciones de agentes -->
+                </select>
+                <input type="date" name="date" required>
+                <input type="time" name="time" required>
+                <button type="submit">Registrar</button>
+            </form>
+        </section>
+        <section>
+            <h2>Listado de Citas</h2>
+            <div id="appointment-list">
+                <!-- Listado de citas -->
+            </div>
+        </section>
+    </main>
+    <script src="js/citas.js"></script>
+    <script src="js/admin.js"></script>
 </body>
 </html>

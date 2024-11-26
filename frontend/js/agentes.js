@@ -20,11 +20,28 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <div>
                         <p>Nombre: ${agent.name}</p>
                         <p>Correo: ${agent.email}</p>
-                        <button onclick="deleteAgent(${agent.id})">Eliminar</button>
+                        <button class="delete-button" onclick="deleteAgent(${agent.id})">Eliminar</button>
                     </div>
                 `
                 )
                 .join('');
+
+            // Agregar estilos al botón
+            const style = document.createElement('style');
+            style.innerHTML = `
+                .delete-button {
+                    background-color: red;
+                    color: white;
+                    border: none;
+                    padding: 8px 10px;
+                    cursor: pointer;
+                    border-radius: 5px;
+                }
+                .delete-button:hover {
+                    background-color: darkred;
+                }
+            `;
+            document.head.appendChild(style);
         } catch (error) {
             console.error('Error al cargar agentes:', error);
         }

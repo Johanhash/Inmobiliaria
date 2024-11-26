@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             renderProperties(results);
         } catch (error) {
             console.error('Error en la búsqueda:', error);
-            alert('Error al realizar la búsqueda.');
+            
         }
     };
 
